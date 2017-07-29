@@ -3,7 +3,6 @@ package controllers
 import (
 	"github.com/revel/revel"
 	"golang.org/x/net/websocket"
-	"github.com/revel/examples/chat/app/chatroom"
 	"fmt"
 	"freezetag/app/models"
 	"encoding/json"
@@ -20,11 +19,15 @@ func (c WebSocket) RoomSocket(user string, ws *websocket.Conn) revel.Result {
 	}
 
 	// Join the room.
-	subscription := chatroom.Subscribe()
+	subscription := Subscribe()//chatroom.Subscribe()
 	defer subscription.Cancel()
 
+	/*
 	chatroom.Join(user)
 	defer chatroom.Leave(user)
+	*/
+	Join(user)
+	defer Leave(user)
 
 	// Send down the archive.
 	for _, event := range subscription.Archive {
@@ -64,7 +67,6 @@ func (c WebSocket) RoomSocket(user string, ws *websocket.Conn) revel.Result {
 			}
 
 			jsonByte := ([]byte)(msg)
-			//userLocation := new(models.UserLocation)
 			userLocation := models.UserLocation{}
 
 			if err := json.Unmarshal(jsonByte, &userLocation); err != nil {
@@ -72,21 +74,8 @@ func (c WebSocket) RoomSocket(user string, ws *websocket.Conn) revel.Result {
 				return nil
 			}
 
-			fmt.Println(msg)
-			fmt.Println(userLocation.UserName)
-			fmt.Println(userLocation.PlayerKind)
-
-			// Otherwise, say something.
-			/*
-			userLocationStr, err := json.Marshal(userLocation);
-
-			if err != nil {
-				fmt.Errorf("これがエラーです %d\n", err)
-				return nil
-			}*/
-
-			//chatroom.Say(user, string(userLocationStr))
-			chatroom.UpdateLocation(userLocation)
+			UpdateLocation(userLocation)
+			//chatroom.UpdateLocation(userLocation)
 		}
 	}
 	return nil
