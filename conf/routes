@@ -9,6 +9,9 @@ module:testrunner
 
 GET     /                                       App.Index
 
+#   WebSocket
+WS      /websocket/room/socket                  WebSocket.RoomSocket
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 
