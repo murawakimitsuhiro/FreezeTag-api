@@ -75,7 +75,6 @@ func (c WebSocket) RoomSocket(user string, ws *websocket.Conn) revel.Result {
 			}
 
 			UpdateLocation(userLocation)
-			//chatroom.UpdateLocation(userLocation)
 		}
 	}
 	return nil
