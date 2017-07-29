@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c025382e-0b81-4966-87b5-264f35dd951c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/websocket.go" afterPath="$PROJECT_DIR$/app/controllers/websocket.go" />
-    </list>
+    <list default="true" id="c025382e-0b81-4966-87b5-264f35dd951c" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,8 +35,8 @@
       <file leaf-file-name="chatroom.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../github.com/revel/examples/chat/app/chatroom/chatroom.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="48" column="26" lean-forward="false" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
+            <state relative-caret-position="446">
+              <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
               <folding>
                 <element signature="e#18#70#0" expanded="true" />
               </folding>
@@ -705,8 +703,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../github.com/revel/examples/chat/app/chatroom/chatroom.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="48" column="26" lean-forward="false" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
+        <state relative-caret-position="446">
+          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
           <folding>
             <element signature="e#18#70#0" expanded="true" />
           </folding>
