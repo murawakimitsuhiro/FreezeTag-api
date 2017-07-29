@@ -64,11 +64,10 @@ func (c WebSocket) RoomSocket(user string, ws *websocket.Conn) revel.Result {
 			}
 
 			jsonByte := ([]byte)(msg)
-			userLocation := new(models.UserLocation)
+			//userLocation := new(models.UserLocation)
+			userLocation := models.UserLocation{}
 
-			fmt.Println("これこれこれ", jsonByte)
-
-			if err := json.Unmarshal(jsonByte, userLocation); err != nil {
+			if err := json.Unmarshal(jsonByte, &userLocation); err != nil {
 				fmt.Println("JSON Unmarshal error:", err)
 				return nil
 			}
@@ -78,7 +77,16 @@ func (c WebSocket) RoomSocket(user string, ws *websocket.Conn) revel.Result {
 			fmt.Println(userLocation.PlayerKind)
 
 			// Otherwise, say something.
-			chatroom.Say(user, msg)
+			/*
+			userLocationStr, err := json.Marshal(userLocation);
+
+			if err != nil {
+				fmt.Errorf("これがエラーです %d\n", err)
+				return nil
+			}*/
+
+			//chatroom.Say(user, string(userLocationStr))
+			chatroom.UpdateLocation(userLocation)
 		}
 	}
 	return nil
