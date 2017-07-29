@@ -4,8 +4,9 @@ import (
 	"github.com/revel/revel"
 	"golang.org/x/net/websocket"
 	"github.com/revel/examples/chat/app/chatroom"
-	"freezetag/app/models"
 	"fmt"
+	"freezetag/app/models"
+	"encoding/json"
 )
 
 type WebSocket struct {
@@ -13,12 +14,6 @@ type WebSocket struct {
 }
 
 func (c WebSocket) RoomSocket(user string, ws *websocket.Conn) revel.Result {
-	/*
-	type request struct {
-		UserLoation models.UserLocation `json: Connection`
-	}*/
-	fmt.Println("繋がれ")
-
 	// Make sure the websocket is valid.
 	if ws == nil {
 		return nil
@@ -67,6 +62,20 @@ func (c WebSocket) RoomSocket(user string, ws *websocket.Conn) revel.Result {
 			if !ok {
 				return nil
 			}
+
+			jsonByte := ([]byte)(msg)
+			userLocation := new(models.UserLocation)
+
+			fmt.Println("これこれこれ", jsonByte)
+
+			if err := json.Unmarshal(jsonByte, userLocation); err != nil {
+				fmt.Println("JSON Unmarshal error:", err)
+				return nil
+			}
+
+			fmt.Println(msg)
+			fmt.Println(userLocation.UserName)
+			fmt.Println(userLocation.PlayerKind)
 
 			// Otherwise, say something.
 			chatroom.Say(user, msg)
